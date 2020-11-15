@@ -5,7 +5,9 @@ use Crud\Support\Database;
 
 class Student extends Database {
 
-
+	/**
+	 * Insert Data
+	 */
 	public function addStudent($name, $email, $cell, $uname){
 		$data = $this -> create("INSERT INTO students (name, email, cell, uname) VALUES ('$name', '$email', '$cell', '$uname') ");
 		if ($data) {
