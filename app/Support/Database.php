@@ -57,5 +57,13 @@ abstract class Database {
 	}
 
 
+/**
+ * Update Profile
+ */
+	public function update($sql){
+		$this -> connection() -> query($sql);
+	}
+
+
 
 }

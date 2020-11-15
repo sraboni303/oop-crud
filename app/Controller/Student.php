@@ -37,6 +37,18 @@ class Student extends Database {
 	}
 
 
+	public function editStudent($id){
+		$data = $this -> find('students', $id);
+		return $data;
+	}
+
+	public function updateStudent($name, $email, $cell, $uname, $id){
+		$this -> update("UPDATE students SET name='$name', email='$email', cell='$cell', uname='$uname' WHERE id='$id' ");
+
+		header("location:students.php");
+	}
+
+
 
 
 
