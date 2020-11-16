@@ -1,7 +1,7 @@
 <?php 
 	include_once "vendor/autoload.php";
-	use Crud\Controller\Teacher;
-	$teacher = new Teacher;
+	use Crud\Controller\Stuff;
+	$stuff = new Stuff;
 
 
 
@@ -11,8 +11,8 @@
 	if (isset($_GET['up_id'])) {
 		$up_id = $_GET['up_id'];
 
-		$t_data = $teacher -> editTeacher($up_id);
-		$up_data = $t_data -> fetch_assoc();
+		$s_data = $stuff -> editStuff($up_id);
+		$up_data = $s_data -> fetch_assoc();
 	}
 
 
@@ -33,7 +33,7 @@
 			
 			$notice = '<p class="alert alert-danger">All Fields are Required !! <button class="close" data-dismiss="alert">&times;</button> </p>';
 		}else{
-			$notice = $teacher -> updateProfile($name, $email, $cell, $uname,$up_id);
+			$notice = $stuff -> updateProfile($name, $email, $cell, $uname,$up_id);
 		}
 
 	}
@@ -44,7 +44,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Teacher Update</title>
+	<title>Stuff Update</title>
 	<!-- ALL CSS FILES  -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -53,7 +53,7 @@
 <body>
 
 	<div class="wrap">
-		<a href="t_table.php" class="btn btn-sm btn-info">Back</a>
+		<a href="s_table.php" class="btn btn-sm btn-info">Back</a>
 		<div class="card shadow">
 			<div class="card-body">
 				<h2>Update Profile</h2>
