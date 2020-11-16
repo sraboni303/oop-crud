@@ -4,6 +4,22 @@
 	$teacher = new Teacher;
 
 
+
+	/**
+	 * Update Profile:
+	 */
+	if (isset($_GET['up_id'])) {
+		$up_id = $_GET['up_id'];
+
+		$t_data = $teacher -> editTeacher($up_id);
+		$up_data = $t_data -> fetch_assoc();
+	}
+
+
+
+	/**
+	 * Form isseting:
+	 */
 	if (isset($_POST['submit'])) {
 
 		// Get Values:
@@ -16,8 +32,14 @@
 		if (empty($name) || empty($email) || empty($cell) || empty($uname) ) {
 			
 			$notice = '<p class="alert alert-danger">All Fields are Required !! <button class="close" data-dismiss="alert">&times;</button> </p>';
+		}else{
+			$notice = $teacher -> updateProfile($name, $email, $cell, $uname,$up_id);
 		}
 
+	}
+
+
+	
 
 
 
@@ -26,7 +48,7 @@
 
 
 
-}
+
 
 ?>
 
@@ -43,7 +65,7 @@
 <body>
 
 	<div class="wrap">
-		<a href="t_profile.php" class="btn btn-sm btn-info">Back</a>
+		<a href="t_table.php" class="btn btn-sm btn-info">Back</a>
 		<div class="card shadow">
 			<div class="card-body">
 				<h2>Update Profile</h2>
@@ -57,19 +79,19 @@
 				<form action="" method="POST">
 					<div class="form-group">
 						<label for="">Name</label>
-						<input name="name" value="" class="form-control" type="text">
+						<input name="name" value="<?php echo $up_data['name']; ?>" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Email</label>
-						<input value="" name="email" class="form-control" type="text">
+						<input value="<?php echo $up_data['email']; ?>" name="email" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Cell</label>
-						<input value="" name="cell" class="form-control" type="text">
+						<input value="<?php echo $up_data['cell']; ?>" name="cell" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<label for="">Username</label>
-						<input value="" name="uname" class="form-control" type="text">
+						<input value="<?php echo $up_data['uname']; ?>" name="uname" class="form-control" type="text">
 					</div>
 					<div class="form-group">
 						<input name="submit" class="btn btn-primary" type="submit" value="Update">

@@ -47,6 +47,25 @@ class Teacher extends Database{
 	}
 
 
+	/**
+	 * 
+	 */
+	public function editTeacher($id){
+		$data = $this -> find('teachers', $id);
+		return $data;
+	}
+
+
+	/**
+	 *  Update Profile
+	 */
+	 public function updateProfile($name, $email, $cell, $uname, $id){
+	 	$this->update("UPDATE teachers SET name='$name', email='$email', cell='$cell', uname='$uname' WHERE id='$id' ");
+
+
+	 }
+
+
 
 
 
